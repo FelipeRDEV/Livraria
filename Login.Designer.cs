@@ -43,6 +43,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.txtSenha = new System.Windows.Forms.TextBox();
             this.btnVerSenha = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -67,6 +68,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.label5);
@@ -185,7 +187,7 @@
             this.txtLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLogin.Location = new System.Drawing.Point(57, 15);
             this.txtLogin.Name = "txtLogin";
-            this.txtLogin.Size = new System.Drawing.Size(192, 29);
+            this.txtLogin.Size = new System.Drawing.Size(207, 29);
             this.txtLogin.TabIndex = 9;
             // 
             // panel4
@@ -202,7 +204,7 @@
             this.txtSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSenha.Location = new System.Drawing.Point(57, 15);
             this.txtSenha.Name = "txtSenha";
-            this.txtSenha.Size = new System.Drawing.Size(192, 29);
+            this.txtSenha.Size = new System.Drawing.Size(207, 29);
             this.txtSenha.TabIndex = 9;
             this.txtSenha.UseSystemPasswordChar = true;
             // 
@@ -217,6 +219,19 @@
             this.btnVerSenha.Size = new System.Drawing.Size(35, 25);
             this.btnVerSenha.TabIndex = 7;
             this.btnVerSenha.Text = "👁";
+            this.btnVerSenha.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnVerSenha_MouseDown);
+            this.btnVerSenha.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnVerSenha_MouseUp);
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.button1.Location = new System.Drawing.Point(130, 372);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(169, 44);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Entrar";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // Login
             // 
@@ -259,6 +274,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox txtLogin;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button1;
     }
 }
 

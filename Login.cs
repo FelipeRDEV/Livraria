@@ -36,5 +36,20 @@ namespace Livraria
         {
 
         }
+
+        private void btnVerSenha_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void btnVerSenha_MouseDown(object sender, MouseEventArgs e)
+        {
+            txtSenha.UseSystemPasswordChar = false;
+        }
+
+        private void btnVerSenha_MouseUp(object sender, MouseEventArgs e)
+        {
+            txtSenha.UseSystemPasswordChar = true;
+
+        }
     }
 }
