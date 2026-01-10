@@ -36,9 +36,18 @@
             this.btnFechar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtLogin = new System.Windows.Forms.TextBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.txtSenha = new System.Windows.Forms.TextBox();
+            this.btnVerSenha = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -58,6 +67,9 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.panel4);
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.btnFechar);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(328, 0);
@@ -68,11 +80,13 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(63, 75);
+            this.pictureBox1.Image = global::Livraria.Properties.Resources.hsemfundo;
+            this.pictureBox1.Location = new System.Drawing.Point(71, 81);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(180, 118);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label1
             // 
@@ -134,6 +148,76 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "Desenvolvido por:";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label5.Location = new System.Drawing.Point(68, 174);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(174, 25);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Faça seu Login";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.txtLogin);
+            this.panel3.Controls.Add(this.label6);
+            this.panel3.Location = new System.Drawing.Point(73, 216);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(281, 61);
+            this.panel3.TabIndex = 6;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label6.Location = new System.Drawing.Point(13, 15);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(35, 25);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "✉";
+            // 
+            // txtLogin
+            // 
+            this.txtLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLogin.Location = new System.Drawing.Point(57, 15);
+            this.txtLogin.Name = "txtLogin";
+            this.txtLogin.Size = new System.Drawing.Size(192, 29);
+            this.txtLogin.TabIndex = 9;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.txtSenha);
+            this.panel4.Controls.Add(this.btnVerSenha);
+            this.panel4.Location = new System.Drawing.Point(73, 288);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(281, 61);
+            this.panel4.TabIndex = 10;
+            // 
+            // txtSenha
+            // 
+            this.txtSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSenha.Location = new System.Drawing.Point(57, 15);
+            this.txtSenha.Name = "txtSenha";
+            this.txtSenha.Size = new System.Drawing.Size(192, 29);
+            this.txtSenha.TabIndex = 9;
+            this.txtSenha.UseSystemPasswordChar = true;
+            // 
+            // btnVerSenha
+            // 
+            this.btnVerSenha.AutoSize = true;
+            this.btnVerSenha.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.btnVerSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVerSenha.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.btnVerSenha.Location = new System.Drawing.Point(13, 15);
+            this.btnVerSenha.Name = "btnVerSenha";
+            this.btnVerSenha.Size = new System.Drawing.Size(35, 25);
+            this.btnVerSenha.TabIndex = 7;
+            this.btnVerSenha.Text = "👁";
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -148,7 +232,12 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -163,6 +252,13 @@
         private System.Windows.Forms.Button btnFechar;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.TextBox txtSenha;
+        private System.Windows.Forms.Label btnVerSenha;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.TextBox txtLogin;
+        private System.Windows.Forms.Label label6;
     }
 }
 
