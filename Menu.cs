@@ -21,5 +21,15 @@ namespace Livraria
         {
 
         }
+
+        private void principalUC1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Menu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

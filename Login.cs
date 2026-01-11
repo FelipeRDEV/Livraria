@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.Security.Cryptography;
 
 namespace Livraria
 {
@@ -16,6 +18,14 @@ namespace Livraria
         {
             InitializeComponent();
         }
+
+        //sql
+
+        SqlConnection cn = new SqlConnection(@"Data Source=localhost\SQLEXPRESS;Integrated Security= SSPI;Initial Catalog = db_livraria");
+
+        SqlCommand cm = new SqlCommand();
+
+        SqlDataReader dr;
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
@@ -50,6 +60,49 @@ namespace Livraria
         {
             txtSenha.UseSystemPasswordChar = true;
 
+        }
+
+        private void btnEntrar_Click(object sender, EventArgs e)
+        {
+            if (txtLogin.Text == "" || txtSenha.Text == "")
+            {
+                MessageBox.Show("Preencha todos os campos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            else
+            {
+                try
+                {
+                    cn.Open();
+                    cm.CommandText = "SELECT * FROM tbl_Atendente WHERE ds_Login = ('" + txtLogin.Text + "') AND ds_Senha = ('" + txtSenha.Text + "')";
+                    cm.Connection = cn;
+                    dr = cm.ExecuteReader();
+
+                    if (dr.HasRows)
+                    {
+                        Menu menu = new Menu();
+                        menu.Show();
+                        this.Hide();
+                    }
+
+                    else
+                    {
+                        MessageBox.Show("Login ou senha incorretos.", "Erro de Login", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        txtLogin.Clear();
+                        txtSenha.Clear();
+                        txtLogin.Focus();
+                    }
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show(err.Message, "Erro");
+                    cn.Close();
+                }
+                finally
+                {
+                    cn.Close();
+                }
+            }
         }
     }
 }
