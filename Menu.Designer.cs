@@ -39,6 +39,8 @@
             this.btnCliente = new System.Windows.Forms.Button();
             this.btnFuncionario = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.principal1 = new Livraria.Principal();
+            this.formAtendente1 = new Livraria.formAtendente();
             this.pnlMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -189,11 +191,27 @@
             this.panel1.Size = new System.Drawing.Size(270, 110);
             this.panel1.TabIndex = 1;
             // 
+            // principal1
+            // 
+            this.principal1.Location = new System.Drawing.Point(266, 0);
+            this.principal1.Name = "principal1";
+            this.principal1.Size = new System.Drawing.Size(667, 612);
+            this.principal1.TabIndex = 1;
+            // 
+            // formAtendente1
+            // 
+            this.formAtendente1.Location = new System.Drawing.Point(266, 0);
+            this.formAtendente1.Name = "formAtendente1";
+            this.formAtendente1.Size = new System.Drawing.Size(667, 612);
+            this.formAtendente1.TabIndex = 2;
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(933, 612);
+            this.Controls.Add(this.formAtendente1);
+            this.Controls.Add(this.principal1);
             this.Controls.Add(this.pnlMenu);
             this.Name = "Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -217,5 +235,7 @@
         private System.Windows.Forms.Button btnCliente;
         private System.Windows.Forms.Button btnFuncionario;
         private System.Windows.Forms.Panel panel1;
+        private Principal principal1;
+        private formAtendente formAtendente1;
     }
 }
