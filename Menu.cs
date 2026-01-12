@@ -31,5 +31,16 @@ namespace Livraria
         {
 
         }
+
+        private void btnFuncionario_Click(object sender, EventArgs e)
+        {
+            formAtendente1.Show();
+            formAtendente1.BringToFront();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

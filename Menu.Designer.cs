@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.pnlMenu = new System.Windows.Forms.Panel();
             this.btnCaixa = new System.Windows.Forms.Button();
             this.btnPedidos = new System.Windows.Forms.Button();
@@ -38,9 +39,9 @@
             this.btnFone = new System.Windows.Forms.Button();
             this.btnCliente = new System.Windows.Forms.Button();
             this.btnFuncionario = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.principal1 = new Livraria.Principal();
             this.formAtendente1 = new Livraria.formAtendente();
+            this.principal1 = new Livraria.Principal();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.pnlMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -181,15 +182,15 @@
             this.btnFuncionario.TabIndex = 2;
             this.btnFuncionario.Text = "Funcionário";
             this.btnFuncionario.UseVisualStyleBackColor = true;
+            this.btnFuncionario.Click += new System.EventHandler(this.btnFuncionario_Click);
             // 
-            // panel1
+            // formAtendente1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Desktop;
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(270, 110);
-            this.panel1.TabIndex = 1;
+            this.formAtendente1.Location = new System.Drawing.Point(266, 0);
+            this.formAtendente1.Name = "formAtendente1";
+            this.formAtendente1.Size = new System.Drawing.Size(667, 612);
+            this.formAtendente1.TabIndex = 2;
+            this.formAtendente1.Visible = false;
             // 
             // principal1
             // 
@@ -198,12 +199,17 @@
             this.principal1.Size = new System.Drawing.Size(667, 612);
             this.principal1.TabIndex = 1;
             // 
-            // formAtendente1
+            // panel1
             // 
-            this.formAtendente1.Location = new System.Drawing.Point(266, 0);
-            this.formAtendente1.Name = "formAtendente1";
-            this.formAtendente1.Size = new System.Drawing.Size(667, 612);
-            this.formAtendente1.TabIndex = 2;
+            this.panel1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(270, 110);
+            this.panel1.TabIndex = 1;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // Menu
             // 
@@ -234,8 +240,8 @@
         private System.Windows.Forms.Button btnFone;
         private System.Windows.Forms.Button btnCliente;
         private System.Windows.Forms.Button btnFuncionario;
-        private System.Windows.Forms.Panel panel1;
         private Principal principal1;
         private formAtendente formAtendente1;
+        private System.Windows.Forms.Panel panel1;
     }
 }

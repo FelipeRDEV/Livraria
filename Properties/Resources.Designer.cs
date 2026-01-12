@@ -63,6 +63,36 @@ namespace Livraria.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap frslogo1 {
+            get {
+                object obj = ResourceManager.GetObject("frslogo1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap frslogo2 {
+            get {
+                object obj = ResourceManager.GetObject("frslogo2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap frslogo21 {
+            get {
+                object obj = ResourceManager.GetObject("frslogo21", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Gemini_Generated_Image_lh55fflh55fflh55 {
             get {
                 object obj = ResourceManager.GetObject("Gemini_Generated_Image_lh55fflh55fflh55", resourceCulture);

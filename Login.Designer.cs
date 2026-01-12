@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,14 +40,16 @@
             this.btnVerSenha = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.txtLogin = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnFechar = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -66,17 +67,6 @@
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Livraria.Properties.Resources.hsemfundo;
-            this.pictureBox1.Location = new System.Drawing.Point(84, 81);
-            this.pictureBox1.MinimumSize = new System.Drawing.Size(180, 118);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(180, 118);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -93,7 +83,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(79, 265);
+            this.label3.Location = new System.Drawing.Point(73, 280);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(172, 25);
             this.label3.TabIndex = 3;
@@ -115,15 +105,16 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(79, 301);
+            this.label1.Location = new System.Drawing.Point(31, 307);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(222, 25);
+            this.label1.Size = new System.Drawing.Size(267, 25);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Sistema de Livraria ";
+            this.label1.Text = "Sistema de Livraria FRS";
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.btnEntrar);
+            this.panel2.Controls.Add(this.btnVerSenha);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.label5);
@@ -139,7 +130,7 @@
             // 
             this.btnEntrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEntrar.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnEntrar.Location = new System.Drawing.Point(130, 372);
+            this.btnEntrar.Location = new System.Drawing.Point(130, 355);
             this.btnEntrar.Name = "btnEntrar";
             this.btnEntrar.Size = new System.Drawing.Size(169, 44);
             this.btnEntrar.TabIndex = 11;
@@ -149,17 +140,17 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.label7);
             this.panel4.Controls.Add(this.txtSenha);
-            this.panel4.Controls.Add(this.btnVerSenha);
-            this.panel4.Location = new System.Drawing.Point(73, 288);
+            this.panel4.Location = new System.Drawing.Point(33, 283);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(281, 61);
+            this.panel4.Size = new System.Drawing.Size(356, 61);
             this.panel4.TabIndex = 10;
             // 
             // txtSenha
             // 
             this.txtSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSenha.Location = new System.Drawing.Point(57, 15);
+            this.txtSenha.Location = new System.Drawing.Point(97, 13);
             this.txtSenha.MaxLength = 8;
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.Size = new System.Drawing.Size(207, 29);
@@ -169,10 +160,10 @@
             // btnVerSenha
             // 
             this.btnVerSenha.AutoSize = true;
-            this.btnVerSenha.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.btnVerSenha.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnVerSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVerSenha.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.btnVerSenha.Location = new System.Drawing.Point(13, 15);
+            this.btnVerSenha.Location = new System.Drawing.Point(343, 299);
             this.btnVerSenha.Name = "btnVerSenha";
             this.btnVerSenha.Size = new System.Drawing.Size(35, 25);
             this.btnVerSenha.TabIndex = 7;
@@ -182,33 +173,21 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.txtLogin);
             this.panel3.Controls.Add(this.label6);
-            this.panel3.Location = new System.Drawing.Point(73, 216);
+            this.panel3.Controls.Add(this.txtLogin);
+            this.panel3.Location = new System.Drawing.Point(33, 216);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(281, 61);
+            this.panel3.Size = new System.Drawing.Size(356, 61);
             this.panel3.TabIndex = 6;
             // 
             // txtLogin
             // 
             this.txtLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLogin.Location = new System.Drawing.Point(57, 15);
+            this.txtLogin.Location = new System.Drawing.Point(97, 12);
             this.txtLogin.MaxLength = 20;
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.Size = new System.Drawing.Size(207, 29);
             this.txtLogin.TabIndex = 9;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label6.Location = new System.Drawing.Point(13, 15);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 25);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "✉";
             // 
             // label5
             // 
@@ -237,6 +216,40 @@
             this.btnFechar.UseVisualStyleBackColor = false;
             this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Livraria.Properties.Resources.frslogo1;
+            this.pictureBox1.Location = new System.Drawing.Point(1, 0);
+            this.pictureBox1.MinimumSize = new System.Drawing.Size(180, 118);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(324, 245);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label6.Location = new System.Drawing.Point(15, 21);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(76, 20);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Usuário:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label7.Location = new System.Drawing.Point(15, 22);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(66, 20);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "Senha:";
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -250,13 +263,13 @@
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -277,8 +290,9 @@
         private System.Windows.Forms.Label btnVerSenha;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox txtLogin;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnEntrar;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
     }
 }
 

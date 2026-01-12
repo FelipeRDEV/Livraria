@@ -119,5 +119,14 @@
   <ItemGroup>
     <None Include="Resources\Gemini_Generated_Image_lh55fflh55fflh55.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\frslogo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\frslogo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\frslogo21.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
