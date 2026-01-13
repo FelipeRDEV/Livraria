@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.funcionario = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.codigolbl = new System.Windows.Forms.Label();
             this.lbl_codigo = new System.Windows.Forms.Label();
             this.lbl_Login = new System.Windows.Forms.Label();
             this.txtLoginFunc = new System.Windows.Forms.TextBox();
@@ -45,6 +45,10 @@
             this.btnAlterarFunc = new System.Windows.Forms.Button();
             this.btnExcluirFunc = new System.Windows.Forms.Button();
             this.btnCancelarFunc = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_status = new System.Windows.Forms.Label();
+            this.radioAtivo = new System.Windows.Forms.RadioButton();
+            this.radioInativo = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridSearchFuncio)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -60,18 +64,18 @@
             this.funcionario.TabIndex = 0;
             this.funcionario.Text = "Funcionário";
             // 
-            // label1
+            // codigolbl
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.Control;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(23, 84);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 24);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Código:";
-            this.label1.Visible = false;
+            this.codigolbl.AutoSize = true;
+            this.codigolbl.BackColor = System.Drawing.SystemColors.Control;
+            this.codigolbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.codigolbl.ForeColor = System.Drawing.Color.Red;
+            this.codigolbl.Location = new System.Drawing.Point(23, 84);
+            this.codigolbl.Name = "codigolbl";
+            this.codigolbl.Size = new System.Drawing.Size(83, 24);
+            this.codigolbl.TabIndex = 1;
+            this.codigolbl.Text = "Código:";
+            this.codigolbl.Visible = false;
             // 
             // lbl_codigo
             // 
@@ -147,9 +151,13 @@
             // 
             this.gridSearchFuncio.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridSearchFuncio.Location = new System.Drawing.Point(67, 441);
+            this.gridSearchFuncio.MultiSelect = false;
             this.gridSearchFuncio.Name = "gridSearchFuncio";
+            this.gridSearchFuncio.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridSearchFuncio.Size = new System.Drawing.Size(537, 153);
             this.gridSearchFuncio.TabIndex = 9;
+            this.gridSearchFuncio.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridSearchFuncio_CellContentClick);
+            this.gridSearchFuncio.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gridSearchFuncio_MouseDoubleClick);
             // 
             // groupBox1
             // 
@@ -200,6 +208,7 @@
             this.btnAlterarFunc.TabIndex = 14;
             this.btnAlterarFunc.Text = "Alterar";
             this.btnAlterarFunc.UseVisualStyleBackColor = true;
+            this.btnAlterarFunc.Click += new System.EventHandler(this.btnAlterarFunc_Click);
             // 
             // btnExcluirFunc
             // 
@@ -209,6 +218,7 @@
             this.btnExcluirFunc.TabIndex = 15;
             this.btnExcluirFunc.Text = "Excluir";
             this.btnExcluirFunc.UseVisualStyleBackColor = true;
+            this.btnExcluirFunc.Click += new System.EventHandler(this.btnExcluirFunc_Click);
             // 
             // btnCancelarFunc
             // 
@@ -220,10 +230,58 @@
             this.btnCancelarFunc.UseVisualStyleBackColor = true;
             this.btnCancelarFunc.Click += new System.EventHandler(this.btnCancelarFunc_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(38, 250);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(72, 24);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Status:";
+            // 
+            // lbl_status
+            // 
+            this.lbl_status.AutoSize = true;
+            this.lbl_status.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_status.Location = new System.Drawing.Point(118, 250);
+            this.lbl_status.Name = "lbl_status";
+            this.lbl_status.Size = new System.Drawing.Size(0, 24);
+            this.lbl_status.TabIndex = 18;
+            // 
+            // radioAtivo
+            // 
+            this.radioAtivo.AutoSize = true;
+            this.radioAtivo.Checked = true;
+            this.radioAtivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioAtivo.Location = new System.Drawing.Point(123, 252);
+            this.radioAtivo.Name = "radioAtivo";
+            this.radioAtivo.Size = new System.Drawing.Size(63, 22);
+            this.radioAtivo.TabIndex = 19;
+            this.radioAtivo.TabStop = true;
+            this.radioAtivo.Text = "Ativo";
+            this.radioAtivo.UseVisualStyleBackColor = true;
+            // 
+            // radioInativo
+            // 
+            this.radioInativo.AutoSize = true;
+            this.radioInativo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioInativo.Location = new System.Drawing.Point(192, 251);
+            this.radioInativo.Name = "radioInativo";
+            this.radioInativo.Size = new System.Drawing.Size(81, 24);
+            this.radioInativo.TabIndex = 20;
+            this.radioInativo.Text = "Inativo";
+            this.radioInativo.UseVisualStyleBackColor = true;
+            this.radioInativo.CheckedChanged += new System.EventHandler(this.radioInativo_CheckedChanged);
+            // 
             // formAtendente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.radioInativo);
+            this.Controls.Add(this.radioAtivo);
+            this.Controls.Add(this.lbl_status);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCancelarFunc);
             this.Controls.Add(this.btnExcluirFunc);
             this.Controls.Add(this.btnAlterarFunc);
@@ -238,7 +296,7 @@
             this.Controls.Add(this.txtLoginFunc);
             this.Controls.Add(this.lbl_Login);
             this.Controls.Add(this.lbl_codigo);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.codigolbl);
             this.Controls.Add(this.funcionario);
             this.Name = "formAtendente";
             this.Size = new System.Drawing.Size(667, 612);
@@ -254,7 +312,7 @@
         #endregion
 
         private System.Windows.Forms.Label funcionario;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label codigolbl;
         private System.Windows.Forms.Label lbl_codigo;
         private System.Windows.Forms.Label lbl_Login;
         private System.Windows.Forms.TextBox txtLoginFunc;
@@ -270,5 +328,9 @@
         private System.Windows.Forms.Button btnAlterarFunc;
         private System.Windows.Forms.Button btnExcluirFunc;
         private System.Windows.Forms.Button btnCancelarFunc;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_status;
+        private System.Windows.Forms.RadioButton radioAtivo;
+        private System.Windows.Forms.RadioButton radioInativo;
     }
 }

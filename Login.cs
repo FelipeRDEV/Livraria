@@ -19,13 +19,18 @@ namespace Livraria
             InitializeComponent();
         }
 
+        public static string usuarioLogado;
+        public static string codUsuarioLogado;
+
         //sql
 
         SqlConnection cn = new SqlConnection(@"Data Source=localhost\SQLEXPRESS;Integrated Security= SSPI;Initial Catalog = db_livraria");
 
         SqlCommand cm = new SqlCommand();
 
-        SqlDataReader dr;
+        //SqlDataReader dr;
+
+        SqlDataAdapter dataAdapter = new SqlDataAdapter();
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
@@ -74,12 +79,18 @@ namespace Livraria
                 try
                 {
                     cn.Open();
-                    cm.CommandText = "SELECT * FROM tbl_Atendente WHERE ds_Login = ('" + txtLogin.Text + "') AND ds_Senha = ('" + txtSenha.Text + "')";
+                    cm.CommandText = "SELECT * FROM tbl_Atendente WHERE ds_Login = ('" + txtLogin.Text + "') AND ds_Senha = ('" + txtSenha.Text + "') AND ds_status = 1";
                     cm.Connection = cn;
-                    dr = cm.ExecuteReader();
+                    SqlDataAdapter da = new SqlDataAdapter(cm);
+                    
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
 
-                    if (dr.HasRows)
+
+                    if (dt.Rows.Count > 0)
                     {
+                        usuarioLogado = dt.Rows[0]["nm_Atendente"].ToString();
+                        codUsuarioLogado = dt.Rows[0]["cd_Atendente"].ToString();
                         Menu menu = new Menu();
                         menu.Show();
                         this.Hide();

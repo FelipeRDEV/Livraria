@@ -29,7 +29,7 @@ namespace Livraria
 
         private void Menu_Load(object sender, EventArgs e)
         {
-
+            labelNomeUser.Text = Login.usuarioLogado;
         }
 
         private void btnFuncionario_Click(object sender, EventArgs e)
@@ -39,6 +39,18 @@ namespace Livraria
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            Login telaLogin = new Login();
+            telaLogin.Show();
+            this.Hide();
+        }
+
+        private void pnlMenu_Paint(object sender, PaintEventArgs e)
         {
 
         }

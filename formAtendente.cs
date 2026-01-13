@@ -26,6 +26,8 @@ namespace Livraria
 
         private void desabilitarCampos()
         {
+            lbl_codigo.Visible = false;
+            codigolbl.Visible = false;
             btnNovoFunc.Enabled = true;
             txtNomeFunc.Enabled = false;
             txtLoginFunc.Enabled = false;
@@ -44,6 +46,8 @@ namespace Livraria
             btnCancelarFunc.Enabled = true;
             txtNomeFunc.Focus();
             btnNovoFunc.Enabled = false;
+            txtBuscaFunc.Clear();
+            gridSearchFuncio.DataSource = null;
         }
 
         private void limparCampos ()
@@ -51,6 +55,9 @@ namespace Livraria
             txtNomeFunc.Clear();
             txtLoginFunc.Clear();
             txtSenhaFunc.Clear();
+            txtBuscaFunc.Clear();
+            gridSearchFuncio.DataSource = null;
+      
         }
         private void lbl_codigo_Click(object sender, EventArgs e)
         {
@@ -104,6 +111,11 @@ namespace Livraria
                 txtSenhaFunc.Focus();
                 return;
             }
+            else if (radioInativo.Checked)
+            {
+                MessageBox.Show("Impossivel cadastrar usuário com status INATIVO!", "Erro na operação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             else
             {
                 try
@@ -112,7 +124,7 @@ namespace Livraria
                     string login = txtLoginFunc.Text;
                     string senha = txtSenhaFunc.Text;
 
-                    string strSql = "INSERT INTO tbl_Atendente (nm_Atendente, ds_Login, ds_Senha) VALUES (@nome, @login, @senha)";
+                    string strSql = "INSERT INTO tbl_Atendente (nm_Atendente, ds_Login, ds_Senha, ds_Status) VALUES (@nome, @login, @senha, 1)";
 
                     cm.CommandText = strSql;
 
@@ -125,6 +137,8 @@ namespace Livraria
                     cn.Open();
 
                     cm.ExecuteNonQuery();
+
+                    cm.Parameters.Clear();
 
                     MessageBox.Show("Funcionario Atendente cadastrado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     limparCampos();
@@ -177,6 +191,213 @@ namespace Livraria
             else
             {
                 gridSearchFuncio.DataSource = null;
+            }
+        }
+
+        private void gridSearchFuncio_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void manipularDados()
+        {
+
+            lbl_codigo.Visible = true;
+            codigolbl.Visible = true;
+            btnAlterarFunc.Enabled = true;
+            btnExcluirFunc.Enabled = true;
+            btnCancelarFunc.Enabled = true;
+            btnSalvarFunc.Enabled = false;
+            txtNomeFunc.Enabled = true;
+            txtLoginFunc.Enabled = true;
+            txtSenhaFunc.Enabled = true;
+            btnNovoFunc.Enabled = false;
+        }
+
+        private void carregaAtendente()
+        {
+            lbl_codigo.Text = gridSearchFuncio.CurrentRow.Cells[0].Value.ToString();
+            txtNomeFunc.Text = gridSearchFuncio.CurrentRow.Cells[3].Value.ToString();
+            txtLoginFunc.Text = gridSearchFuncio.CurrentRow.Cells[1].Value.ToString();
+            txtSenhaFunc.Text = gridSearchFuncio.CurrentRow.Cells[2].Value.ToString();
+            bool ativo = Convert.ToBoolean(gridSearchFuncio.CurrentRow.Cells[4].Value);
+
+            if (ativo) { 
+                radioAtivo.Checked = true;
+            }
+            else
+            {
+                radioInativo.Checked = true;
+            }
+
+            manipularDados();
+        }
+
+        private void gridSearchFuncio_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            carregaAtendente();
+            if (radioAtivo.Checked)
+            {
+                btnExcluirFunc.Enabled = true;
+            }
+            else
+            {
+                btnExcluirFunc.Enabled = false;
+            }
+        }
+
+        private void btnAlterarFunc_Click(object sender, EventArgs e)
+        {
+            if (txtNomeFunc.Text == "")
+            {
+                MessageBox.Show("O campo NOME é obrigatório!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtNomeFunc.Focus();
+                return;
+            }
+            else if (txtLoginFunc.Text == "")
+            {
+                MessageBox.Show("O campo LOGIN é obrigatório!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtLoginFunc.Focus();
+                return;
+            }
+            else if (txtSenhaFunc.Text == "")
+            {
+                MessageBox.Show("O campo SENHA é obrigatório!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtSenhaFunc.Focus();
+                return;
+            }
+            else if (txtSenhaFunc.Text.Length < 8)
+            {
+                MessageBox.Show("A SENHA deve conter no mínimo 8 caracteres!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtSenhaFunc.Focus();
+                return;
+            }
+            else if (radioInativo.Checked)
+            {
+                MessageBox.Show("Para inativar um funcionário, é preciso clicar no botão remover!", "Erro na operação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            {
+                try
+                {
+                    string nome = txtNomeFunc.Text;
+                    string login = txtLoginFunc.Text;
+                    string senha = txtSenhaFunc.Text;
+                    int cd = Convert.ToInt32(lbl_codigo.Text);
+
+                    string strSql = "UPDATE tbl_Atendente SET ds_Login = @login, ds_Senha = @senha, nm_Atendente = @nome, ds_Status = 1 where cd_Atendente = @cd";
+
+                    cm.CommandText = strSql;
+
+                    cm.Connection = cn;
+
+                    cm.Parameters.Add("@login", SqlDbType.VarChar).Value = login;
+                    cm.Parameters.Add("@senha", SqlDbType.Char).Value = senha;
+                    cm.Parameters.Add("@nome", SqlDbType.VarChar).Value = nome;
+                    cm.Parameters.Add("@cd", SqlDbType.Int).Value = cd;
+
+                    cn.Open();
+
+                    cm.ExecuteNonQuery();
+
+                    cm.Parameters.Clear();
+
+                    MessageBox.Show("Funcionario alterado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    limparCampos();
+                    desabilitarCampos();
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Erro");
+                    cn.Close();
+                }
+                finally
+                {
+                    cn.Close();
+                }
+            }
+        }
+
+        private void radioInativo_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnExcluirFunc_Click(object sender, EventArgs e)
+        {
+            if (txtNomeFunc.Text == "")
+            {
+                MessageBox.Show("O campo NOME é obrigatório!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtNomeFunc.Focus();
+                return;
+            }
+            else if (txtLoginFunc.Text == "")
+            {
+                MessageBox.Show("O campo LOGIN é obrigatório!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtLoginFunc.Focus();
+                return;
+            }
+            else if (txtSenhaFunc.Text == "")
+            {
+                MessageBox.Show("O campo SENHA é obrigatório!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtSenhaFunc.Focus();
+                return;
+            }
+            else if (txtSenhaFunc.Text.Length < 8)
+            {
+                MessageBox.Show("A SENHA deve conter no mínimo 8 caracteres!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtSenhaFunc.Focus();
+                return;
+            }
+            else if (radioAtivo.Checked)
+            {
+                MessageBox.Show("Só é possível excluir um usuário que esteja inativo!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtSenhaFunc.Focus();
+                return;
+            }
+            else
+            {
+                DialogResult exclusao = MessageBox.Show("Tem certeza que deseja excluir este funcionário?", "Confirmação de exclusão", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (exclusao == DialogResult.No)
+                {
+                    return;
+                }
+                else
+                {
+                    try
+                    {
+                        cn.Open();
+
+                        string sqlStr = "UPDATE tbl_Atendente SET ds_status = 0 WHERE cd_Atendente = @cd";
+
+                        cm.CommandText = sqlStr;
+
+                        cm.Connection = cn;
+
+                        cm.Parameters.Add("@cd", SqlDbType.Int).Value = Convert.ToInt32(lbl_codigo.Text);
+
+                        cm.ExecuteNonQuery();
+
+                        cm.Parameters.Clear();
+
+                        MessageBox.Show("Dados Excluídos com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        limparCampos();
+                        desabilitarCampos();
+                    }
+
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Erro");
+                        cn.Close();
+                    }
+                    finally
+                    {
+                        cn.Close();
+                    }
+                }
             }
         }
     }
